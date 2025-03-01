@@ -2,7 +2,6 @@ import telebot
 from currency_converter import CurrencyConverter
 from dotenv import load_dotenv
 import os
-from datetime import date
 
 load_dotenv('.env')
 bot_key = os.getenv('bot_key')
@@ -31,7 +30,7 @@ def convert_value(message):
     amount = split_message[0]
     base_currency = split_message[1].upper()
     target_currency = split_message[3].upper()
-    converted = converter.convert(amount, base_currency, target_currency, date=date(2025, 3, 1))
+    converted = converter.convert(amount, base_currency, target_currency)
     bot.reply_to(message, f'Here is your complete convert: {converted:.2f} {target_currency}')
 
 bot.infinity_polling()
